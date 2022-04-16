@@ -3,20 +3,25 @@ const axios = require('axios').default;
 
 
 async function getHeaders(factoryHeader, paramHeader, customHeaders) {
-  let facHeaders = {};
+  let h = {};
   if (typeof factoryHeader === 'function') {
-    facHeaders = factoryHeader();
+    h = factoryHeader();
     //en caso de ser promise------------
-    if (facHeaders.then) {
-      facHeaders = await factoryHeader();
+    if (h.then) {
+      h = await factoryHeader();
     }
   }
   
-  return {...paramHeader, ...customHeaders, ...facHeaders};
+  return {...paramHeader, ...customHeaders, ...h};
   
 }
 
-
+/***
+ *
+ * @param factoryHeader
+ * @returns {{setIsDebug: setIsDebug, requestGET: ((function(*=, *=): Promise<unknown>)|*), requestPOST: ((function(*=, *=, *=): Promise<unknown>)|*), requestDELETE: ((function(*=, *=): Promise<unknown>)|*)}}
+ * @constructor
+ */
 export const FactoryReqJson = (factoryHeader = null) => {
   
   let isDebug = false;
