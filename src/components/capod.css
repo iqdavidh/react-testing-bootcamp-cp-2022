@@ -7,8 +7,15 @@
 
 .wrapperApodImg {
     flex-grow: 1;
+    vertical-align: center;
 }
 
 .wrapperApodImg img {
     width: 100%;
+}
+
+.imgTitle {
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center;
 }

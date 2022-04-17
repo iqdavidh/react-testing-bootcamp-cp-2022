@@ -1,6 +1,6 @@
-import './App.css';
 import {useEffect, useState} from "react";
 import CMain from "../components/CMain";
+import CFooter from "../components/CFooter";
 
 const apiClient = require('../services/NasaApiClient');
 
@@ -29,11 +29,12 @@ function App() {
         }
       }
       
+    
       console.log(result);
       
       const stateNew = result.success
         ? {isLoaded: true, item: result.data}
-        : {isLoaded: true, msgError: result.msg};
+        : {isLoaded: true, msgError: "There was an error, please try again. " + result.msg};
       
       setApodState(stateNew);
       
@@ -44,20 +45,14 @@ function App() {
   return (
     <section className="section">
       <div className="container">
-        <h1 className="title has-text-centered">
+  
+        <h1 className="title has-text-centered mb-5">
           NASA's picture of the day
         </h1>
         
         <CMain appState={apodState}/>
         
-        <div id="footer" className="is-small has-text-centered mt-5">
-          <p>
-            davidh
-          </p>
-          <p className="">
-            Project created during Wizeline Academy React Testing Bootcamp April 2022
-          </p>
-        </div>
+        <CFooter/>
       
       
       </div>
