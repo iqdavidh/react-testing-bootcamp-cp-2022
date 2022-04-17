@@ -1,23 +1,28 @@
 import React from 'react';
+import './capod.css';
 
 const CApod = ({apodItem}) => {
   
   
-  if(apodItem===null){
+  if (apodItem === null) {
     return null;
   }
   
   return (
-    <>
-      <div>
-        {JSON.stringify(apodItem)}
-      </div>
-      <div className="is-flex-desktop">
-        <div className="is-half-desktop is-flex-grow-1">1a</div>
-        <div className="is-half-desktop is-flex-grow-1">2</div>
-      </div>
-    </>
     
+    <div className="is-flex-tablet">
+      <div className="wrapperApodImg">
+        <a href={apodItem.hdurl} target="_blank">
+          <img title={apodItem.title} src={apodItem.url} alt={apodItem.date}/>
+        </a>
+      </div>
+      
+      <div className="apodExplanation">
+        {apodItem.explanation}
+      </div>
+    
+    </div>
+  
   );
 };
 

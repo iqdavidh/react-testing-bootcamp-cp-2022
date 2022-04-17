@@ -1,0 +1,14 @@
+.apodExplanation {
+    padding: 0 20px;
+    text-align: justify;
+    flex-grow: 1;
+    flex-shrink: 2;
+}
+
+.wrapperApodImg {
+    flex-grow: 1;
+}
+
+.wrapperApodImg img {
+    width: 100%;
+}
