@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { render, screen } from '@testing-library/react';
 
 import CApod from './CApod';
 
 
-describe('CApod', () => {
-  it('renders Apod Component', async () => {
+
+  test('renders Apod Component', async () => {
     
     const item = {
       "date": "2022-04-17",
@@ -15,11 +15,10 @@ describe('CApod', () => {
       "title": "Shuttle Over Earth",
       "url": "https://apod.nasa.gov/apod/image/2204/shuttleAtm_nasa_960.jpg"
     }
-    const root= ReactDOM.createRoot(document.getElementById("root"));
-    root.render(<CApod apodItem={item}/>);
+    
+    
+    render(<CApod apodItem={item}/>);
     
     
     
   });
-})
-;
