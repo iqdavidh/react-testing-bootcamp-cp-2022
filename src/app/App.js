@@ -1,18 +1,28 @@
 import './App.css';
+import {useState} from "react";
+import CApod from "../components/CApod";
+import CLoading from "../components/CLoading";
 
 function App() {
+  
+  const [apodItem, setAPodItem] = useState(null)
+  const [appState, setAppState] = useState({isLoaded: false})
+  
+  
+  const mainElem = appState.isLoaded
+    ? <CApod apodItem={apodItem}/>
+    : <CLoading/>
+  
+  
   return (
     <section className="section">
       <div className="container">
         <h1 className="title has-text-centered">
-          NASAS picture of the day
+          NASA picture of the day
         </h1>
-      
-        <div className="is-flex-desktop">
-          <div className="">1a</div>
-          <div className="">2</div>
-        </div>
-  
+        
+        {mainElem}
+        
         <div id="footer" className="is-small has-text-centered mt-5">
           <p>
             davidh
@@ -21,8 +31,8 @@ function App() {
             Project created during Wizeline Academy React Testing Bootcamp April 2022
           </p>
         </div>
-    
-        
+      
+      
       </div>
     </section>
   );
