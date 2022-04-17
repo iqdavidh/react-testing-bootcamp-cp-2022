@@ -1,6 +1,4 @@
-const path = require('path');
 const axios = require('axios').default;
-
 
 async function getHeaders(factoryHeader, paramHeader, customHeaders) {
   let h = {};
@@ -68,7 +66,7 @@ export const FactoryReqJson = (factoryHeader = null) => {
           .get(url, {headers})
           .then(function (response) {
             logger(response);
-            return response.data;
+            return {success: true, data: response.data};
           })
           .catch(function (error) {
             return handleCatchError(error, url);
@@ -89,8 +87,8 @@ export const FactoryReqJson = (factoryHeader = null) => {
           .post(url, dataObject, {headers})
           .then(function (response) {
             logger(response);
+            return {success: true, data: response.data};
             
-            return response.data;
           })
           .catch(function (error) {
             return handleCatchError(error, url);
@@ -109,7 +107,7 @@ export const FactoryReqJson = (factoryHeader = null) => {
           .delete(url, {headers})
           .then(function (response) {
             logger(response);
-            return response.data;
+            return {success: true, data: response.data};
           })
           .catch(function (error) {
             return handleCatchError(error, url);
@@ -118,7 +116,7 @@ export const FactoryReqJson = (factoryHeader = null) => {
         return handleCatchError(error, url);
       }
     },
-  
+    
   }
   
 };

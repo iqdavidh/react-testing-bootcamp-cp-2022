@@ -8,10 +8,16 @@ const CApod = ({apodItem}) => {
   }
   
   return (
-    <div className="is-flex-desktop">
-      <div className="">1a</div>
-      <div className="">2</div>
-    </div>
+    <>
+      <div>
+        {JSON.stringify(apodItem)}
+      </div>
+      <div className="is-flex-desktop">
+        <div className="is-half-desktop is-flex-grow-1">1a</div>
+        <div className="is-half-desktop is-flex-grow-1">2</div>
+      </div>
+    </>
+    
   );
 };
 

@@ -1,27 +1,42 @@
 import './App.css';
-import {useState} from "react";
-import CApod from "../components/CApod";
-import CLoading from "../components/CLoading";
+import {useEffect, useState} from "react";
+import CMain from "../components/CMain";
+
+const apiClient = require('../services/NasaApiClient');
 
 function App() {
   
-  const [apodItem, setAPodItem] = useState(null)
-  const [appState, setAppState] = useState({isLoaded: false})
+  const [dateSelected, setDateSelected] = useState(null)
+  const [apodState, setApodState] = useState({isLoaded: false})
   
   
-  const mainElem = appState.isLoaded
-    ? <CApod apodItem={apodItem}/>
-    : <CLoading/>
+  useEffect(() => {
+    
+    //Inititialization loading data from api
+    (async () => {
+      
+      const result = await apiClient.Apod(dateSelected);
+      
+      console.log(result);
+      
+      const stateNew = result.success
+        ? {isLoaded: true, item: result.data }
+        : {isLoaded: true, msgError: result.msg};
+      
+      setApodState(stateNew);
+      
+    })();
+  }, [dateSelected])
   
   
   return (
     <section className="section">
       <div className="container">
         <h1 className="title has-text-centered">
-          NASA picture of the day
+          NASA's picture of the day
         </h1>
         
-        {mainElem}
+        <CMain appState={apodState}/>
         
         <div id="footer" className="is-small has-text-centered mt-5">
           <p>
