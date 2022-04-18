@@ -2,7 +2,7 @@ import React from 'react';
 import './capod.css';
 import CDateSelector from "./CDateSelector";
 
-const CApod = ({apodItem}) => {
+const CApod = ({apodItem, setDateSelected}) => {
   
   
   
@@ -12,7 +12,7 @@ const CApod = ({apodItem}) => {
   
   return (
     <>
-    <CDateSelector />
+    <CDateSelector setDateSelected={setDateSelected} />
     
     <div className="is-flex-tablet" style={{alignItems:"center"}}>
       <div className="wrapperApodImg">

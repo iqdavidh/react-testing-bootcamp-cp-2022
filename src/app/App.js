@@ -2,18 +2,20 @@ import {useEffect, useState} from "react";
 import CMain from "../components/CMain";
 import CFooter from "../components/CFooter";
 
-const apiClient = require('../services/NasaApiClient');
 
 function App() {
   
   const [dateSelected, setDateSelected] = useState(null)
   const [apodState, setApodState] = useState({isLoaded: false})
   
+ 
   
   useEffect(() => {
     
     //Inititialization loading data from api
     (async () => {
+      
+      console.log(dateSelected)
       
       // const result = await apiClient.Apod(dateSelected);
       const result = {
@@ -29,7 +31,7 @@ function App() {
         }
       }
       
-    
+      
       console.log(result);
       
       const stateNew = result.success
@@ -41,19 +43,18 @@ function App() {
     })();
   }, [dateSelected])
   
+
   
   return (
     <section className="section">
       <div className="container">
-  
+        
         <h1 className="title has-text-centered mb-5">
           NASA's picture of the day
         </h1>
-        
-        <CMain appState={apodState}/>
+        <CMain appState={apodState} setDateSelected={setDateSelected} />
         
         <CFooter/>
-      
       
       </div>
     </section>

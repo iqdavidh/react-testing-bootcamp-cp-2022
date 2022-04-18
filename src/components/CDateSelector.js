@@ -3,9 +3,8 @@ import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.min';
 import "bulma-calendar/dist/css/bulma-calendar.min.css"
 import './cdateselector.css';
 
-const CDateSelector = ({onChageDate, initialDate}) => {
+const CDateSelector = ({setDateSelected, initialDate}) => {
   
-  const[date,setDate] = useState();
   
   useEffect(() => {
     // Initialize all input of date type.
@@ -17,7 +16,7 @@ const CDateSelector = ({onChageDate, initialDate}) => {
     const element = document.querySelector('#datetxt');
     // bulmaCalendar instance is available as element.bulmaCalendar
     element.bulmaCalendar.on('select', (datepicker) => {
-      setDate(datepicker.data.value())
+      setDateSelected(datepicker.data.value())
     });
     element.bulmaCalendar.color="#012b6c"
     element.bulmaCalendar.dateFormat="yyyy-MM-dd"
