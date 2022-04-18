@@ -18,4 +18,4 @@ const NasaApiClient = {
     return await reqJson.requestGET(url);
   }
 }
-module.exports = NasaApiClient;
+export default NasaApiClient;
