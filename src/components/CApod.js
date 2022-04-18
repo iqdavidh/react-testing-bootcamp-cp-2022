@@ -12,7 +12,7 @@ const CApod = ({apodItem, setDateSelected}) => {
   
   return (
     <>
-    <CDateSelector setDateSelected={setDateSelected} />
+    <CDateSelector dateSelected={apodItem?.date} setDateSelected={setDateSelected} />
     
     <div className="is-flex-tablet" style={{alignItems:"center"}}>
       <div className="wrapperApodImg">

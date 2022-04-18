@@ -3,13 +3,12 @@ import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.min';
 import "bulma-calendar/dist/css/bulma-calendar.min.css"
 import './cdateselector.css';
 
-const CDateSelector = ({setDateSelected, initialDate}) => {
+const CDateSelector = ({setDateSelected, dateSelected}) => {
   
   
   useEffect(() => {
     // Initialize all input of date type.
-    const calendars = bulmaCalendar.attach('[type="date"]', {dateFormat:"yyyy-MM-dd"});
-    
+    bulmaCalendar.attach('[type="date"]', {dateFormat:"yyyy-MM-dd"});
     
     // To access to bulmaCalendar instance of an element
     // eslint-disable-next-line no-undef
@@ -21,12 +20,13 @@ const CDateSelector = ({setDateSelected, initialDate}) => {
     element.bulmaCalendar.color="#012b6c"
     element.bulmaCalendar.dateFormat="yyyy-MM-dd"
     
-  }, [initialDate]);
+  }, [dateSelected]);
   
   return (
     <div className="is-flex mb-4" style={{justifyContent:"center"}}>
       <div style={{maxWidth:"180px"}}>
         <input id="datetxt" type="date" />
+        {dateSelected}
       </div>
       
     </div>

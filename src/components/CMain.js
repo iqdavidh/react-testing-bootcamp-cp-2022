@@ -17,7 +17,7 @@ const CMain = ({appState, setDateSelected}) => {
     return null;
   }
   
-  return <CApod apodItem={appState.item} setDateSelected={setDateSelected} />
+  return <CApod apodItem={appState.item}  setDateSelected={setDateSelected} />
   
   
 };
