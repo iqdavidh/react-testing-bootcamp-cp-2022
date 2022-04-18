@@ -1,0 +1,17 @@
+.datetimepicker-dummy.is-primary .datetimepicker-dummy-wrapper::before, .datetimepicker-dummy.is-primary .datetimepicker-dummy-wrapper:before, .datetimepicker-dummy.is-primary::before, .datetimepicker-dummy.is-primary:before {
+    background-color: #012b6c;
+}
+
+.datetimepicker.is-primary .datepicker-nav {
+    background: #012b6c;
+    color: #fff;
+}
+
+.datetimepicker-dummy.is-primary .datetimepicker-dummy-wrapper.is-active, .datetimepicker-dummy.is-primary .datetimepicker-dummy-wrapper.is-focused, .datetimepicker-dummy.is-primary .datetimepicker-dummy-wrapper:active, .datetimepicker-dummy.is-primary .datetimepicker-dummy-wrapper:focus {
+    border-color: #012b6c;
+    box-shadow:none;
+}
+
+.datetimepicker-dummy.is-primary .datetimepicker-clear-button {
+    color: #012b6c;
+}
