@@ -1,9 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useContext} from 'react';
 import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.min';
 import "bulma-calendar/dist/css/bulma-calendar.min.css"
 import './cdateselector.css';
+import DateContext from "../model/DateContext";
 
-const CDateSelector = ({setDateSelected, dateSelected}) => {
+const CDateSelector = ({}) => {
+  
+  const modelDate = useContext(DateContext)
   
   
   useEffect(() => {
@@ -15,18 +18,25 @@ const CDateSelector = ({setDateSelected, dateSelected}) => {
     const element = document.querySelector('#datetxt');
     // bulmaCalendar instance is available as element.bulmaCalendar
     element.bulmaCalendar.on('select', (datepicker) => {
-      setDateSelected(datepicker.data.value())
+      const v=datepicker.data.value();
+      const isValid = modelDate.getIsApocDateValid(v );
+      if(isValid===true){
+        modelDate.setDate(v)
+      }else{
+        console.log()
+      }
+      
     });
     element.bulmaCalendar.color="#012b6c"
     element.bulmaCalendar.dateFormat="yyyy-MM-dd"
     
-  }, [dateSelected]);
+  }, []);
   
   return (
     <div className="is-flex mb-4" style={{justifyContent:"center"}}>
       <div style={{maxWidth:"180px"}}>
         <input id="datetxt" type="date" />
-        {dateSelected}
+        {modelDate.getDate()}
       </div>
       
     </div>

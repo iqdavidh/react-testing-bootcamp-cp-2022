@@ -1,16 +1,7 @@
 
-const today = new Date();
-const todayYMD = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
 const LibValidacion = {
-  isApocDateValid:(d)=>{
-
-    const minDate='1995-06-16';
   
-   
-    
-    
-  },
   
   getDataClean: (dataRaw, listaCamposAllow, isRequerdosAll = false) => {
     let dataClean = {};
