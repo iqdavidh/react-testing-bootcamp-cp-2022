@@ -1,7 +1,12 @@
 import React, {useEffect, useState} from 'react';
 
-const today = new Date();
-const todayYMD = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+const getToday = () => {
+  const today = new Date();
+  const month = (today.getMonth() + 1).toString().padStart(2, '0');
+  const day = today.getDate().toString().padStart(2, '0');
+  
+  return today.getFullYear() + `-${month}-${day}`;
+}
 
 const useDate = () => {
   
@@ -14,6 +19,7 @@ const useDate = () => {
   
   
   const getIsApocDateValid = (d) => {
+    const todayYMD = getToday();
     
     const minDate = '1995-06-16';
     
@@ -29,7 +35,7 @@ const useDate = () => {
     
   };
   
-  const setDate =(v)=>{
+  const setDate = (v) => {
     console.log(v);
     setD(v);
   }

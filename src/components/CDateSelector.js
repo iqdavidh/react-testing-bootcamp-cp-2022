@@ -23,7 +23,7 @@ const CDateSelector = ({}) => {
       if(isValid===true){
         modelDate.setDate(v)
       }else{
-        console.log()
+        console.log('wrong date');
       }
       
     });
