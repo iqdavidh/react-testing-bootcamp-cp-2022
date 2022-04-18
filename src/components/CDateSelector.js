@@ -19,7 +19,7 @@ const CDateSelector = ({}) => {
       toast(isValid);
     }
   }
-
+  
   
   useEffect(() => {
     // Initialize all input of date type.
@@ -38,7 +38,6 @@ const CDateSelector = ({}) => {
     <div className="is-flex mb-4" style={{justifyContent: "center"}}>
       <div style={{maxWidth: "180px"}}>
         <input id="datetxt" type="date"/>
-        {modelDate.getDate()}
       </div>
       <ToastContainer/>
     </div>
