@@ -2,7 +2,7 @@ import React from 'react';
 
 const CErrorMsg = ({msg}) => {
   return (
-    <div className="has-text-centered is-danger">
+    <div role="alert" className="has-text-centered is-danger">
       {msg}
     </div>
   );

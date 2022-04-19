@@ -1,6 +1,5 @@
 //https://stackoverflow.com/questions/71685441/react-testing-library-gives-console-error-for-reactdom-render-in-react-18
 
-
 import { render, screen } from '@testing-library/react';
 import CApod from './CApod';
 
