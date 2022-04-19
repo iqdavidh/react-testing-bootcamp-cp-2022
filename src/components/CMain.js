@@ -5,13 +5,14 @@ import CErrorMsg from "./CErrorMsg";
 import ApodStore from "../services/ApodStore";
 import apiClient from "../services/NasaApiClient";
 import DateContext from "../model/DateContext";
+import CDateSelector from "./CDateSelector";
 
 const CMain = () => {
   
   const [apodState, setApodState] = useState({isLoaded: false})
   const modelDate = useContext(DateContext);
   
-  const dateSelected=modelDate.getDate();
+  const dateSelected = modelDate.getDate();
   
   useEffect(() => {
     
@@ -47,7 +48,12 @@ const CMain = () => {
     return null;
   }
   
-  return <CApod apodItem={apodState.item}/>
+  return (
+    <div>
+      <CDateSelector dateSelected={apodState.item?.date} setDateSelected={modelDate.setDate}/>
+      <CApod apodItem={apodState.item}/>
+    </div>
+  );
   
   
 };

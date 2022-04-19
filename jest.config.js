@@ -1,14 +1,15 @@
-// Sync object
-/** @type {import('@jest/types').Config.InitialOptions} */
-const config = {
-  verbose: true,
+
+
+// Add any custom config to be passed to Jest
+const customJestConfig = {
+  coverageThreshold: {
+    global: {
+      lines: 80,
+    },
+  },
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
+  testEnvironment: "jest-environment-jsdom",
 };
 
-module.exports = config;
-
-// Or async function
-module.exports = async () => {
-  return {
-    verbose: true,
-  };
-};
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+module.exports = customJestConfig;

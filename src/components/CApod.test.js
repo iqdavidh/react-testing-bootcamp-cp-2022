@@ -2,8 +2,6 @@ import { render, screen } from '@testing-library/react';
 
 import CApod from './CApod';
 
-
-
   test('renders Apod Component', async () => {
     
     const item = {
@@ -19,6 +17,10 @@ import CApod from './CApod';
     
     render(<CApod apodItem={item}/>);
     
+    expect(screen.getByText(item.date)).toBeInTheDocument()
+    expect(screen.getByText(item.explanation)).toBeInTheDocument()
+    expect(screen.getByText(item.title)).toBeInTheDocument()
+    expect(screen.getByText(item.url)).toBeInTheDocument()
     
     
   });
