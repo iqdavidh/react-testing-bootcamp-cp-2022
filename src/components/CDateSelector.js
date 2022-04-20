@@ -2,19 +2,19 @@ import React, {useEffect, useContext} from 'react';
 import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.min';
 import "bulma-calendar/dist/css/bulma-calendar.min.css"
 import './cdateselector.css';
-import DateContext from "../model/DateContext";
+import AppContext from "../model/AppContext";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const CDateSelector = ({}) => {
   
-  const modelDate = useContext(DateContext)
+  const modelAppState = useContext(AppContext)
   
   const setDatePicket = (datepicker) => {
     const v = datepicker.data.value();
-    const isValid = modelDate.getIsApocDateValid(v);
+    const isValid = modelAppState.getIsApocDateValid(v);
     if (isValid === true) {
-      modelDate.setDate(v)
+      modelAppState.setDate(v)
     } else {
       toast(isValid);
     }

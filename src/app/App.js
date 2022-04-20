@@ -1,16 +1,15 @@
 import {useEffect, useState} from "react";
 import CMain from "../components/CMain";
 import CFooter from "../components/CFooter";
-import useDate from "../model/UseDate";
-import DateContext from "../model/DateContext";
+import useAppState from "../model/UseAppState";
+import AppContext from "../model/AppContext";
 
 function App() {
   
   
-  
   return (
     
-    <DateContext.Provider value={useDate()}>
+    <AppContext.Provider value={useAppState()}>
       <section className="section">
         <div className="container">
           
@@ -24,7 +23,7 @@ function App() {
         
         </div>
       </section>
-    </DateContext.Provider>
+    </AppContext.Provider>
   );
 }
 

@@ -8,9 +8,10 @@ const getToday = () => {
   return today.getFullYear() + `-${month}-${day}`;
 }
 
-const useDate = () => {
+const useAppState = () => {
   
   const [d, setD] = useState(null)
+  const [isShowModal, setIsShowModal] = useState(false)
   
   //Inicializacion
   useEffect(() => {
@@ -43,8 +44,12 @@ const useDate = () => {
   return {
     getDate: () => d,
     setDate,
-    getIsApocDateValid
+    getIsApocDateValid, /* TODO remove */
+    
+    getIsShowModal:()=>isShowModal,
+    setIsShowModal
+    
   };
 };
 
-export default useDate;
+export default useAppState;

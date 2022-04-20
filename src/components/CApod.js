@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './capod.css';
+import AppContext from "../model/AppContext";
 
 const CApod = ({apodItem}) => {
   
-  
+  const modelAppState = useContext(AppContext);
   
   if (apodItem === null) {
     return null;
@@ -11,25 +12,27 @@ const CApod = ({apodItem}) => {
   
   return (
     <>
-    
-    <div className="is-flex-tablet" style={{alignItems:"center"}}>
-      <div className="wrapperApodImg">
-        <a href={apodItem.hdurl} target="_blank">
-          <img title={apodItem.title} src={apodItem.url} alt={apodItem.date}/>
-        </a>
+      <div className=" has-text-centered mb-4">
+        <button className="button is-info " onClick={()=>modelAppState.setIsShowModal(true)}>
+          <i className="fa fa-calendar mr-2"/>
+          {apodItem.date}
+        </button>
       </div>
       
-      <div className="apodExplanation">
-      
-        <div className="mb-3">
-          <h2 className="imgTitle">{apodItem.title}</h2>
-          <p className="has-text-centered" style={{fontSize:"12px"}}>{apodItem.date}</p>
+      <div className="is-flex-tablet" >
+        <div className="wrapperApodImg">
+          <a href={apodItem.hdurl} target="_blank">
+            <img title={apodItem.title} src={apodItem.url} alt={apodItem.date}/>
+          </a>
         </div>
         
-        {apodItem.explanation}
+        <div className="apodExplanation" style={{aligItems: "top"}}>
+          
+          <h2 className="imgTitle mb-2">{apodItem.title}</h2>
+          {apodItem.explanation}
+        </div>
+      
       </div>
-    
-    </div>
     </>
   );
 };
