@@ -1,4 +1,3 @@
-import {useEffect, useState} from "react";
 import CMain from "../components/CMain";
 import CFooter from "../components/CFooter";
 import useAppState from "../model/UseAppState";
@@ -12,15 +11,11 @@ function App() {
     <AppContext.Provider value={useAppState()}>
       <section className="section">
         <div className="container">
-          
           <h1 className="title has-text-centered mb-5">
             NASA's picture of the day
           </h1>
-          
           <CMain />
-          
           <CFooter/>
-        
         </div>
       </section>
     </AppContext.Provider>

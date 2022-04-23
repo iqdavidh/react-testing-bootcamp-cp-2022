@@ -5,14 +5,18 @@ import CErrorMsg from "./CErrorMsg";
 import ApodStore from "../services/ApodStore";
 import apiClient from "../services/NasaApiClient";
 import AppContext from "../model/AppContext";
-import CDateSelector from "./CDateSelector";
+import CModalSelDate from "./CModalSelDate";
 
 const CMain = () => {
   
   const [apodState, setApodState] = useState({isLoaded: false})
+  
+  
   const modelAppState = useContext(AppContext);
   
   const dateSelected = modelAppState.getDate();
+  
+  
   
   useEffect(() => {
     
@@ -36,6 +40,11 @@ const CMain = () => {
     })();
   }, [dateSelected])
   
+  useEffect(()=>{
+   modelAppState.setIsShowModal(false)
+  }, [])
+  
+  
   if (!apodState.isLoaded) {
     return <CLoading/>;
   }
@@ -47,11 +56,17 @@ const CMain = () => {
   if (!apodState.item) {
     return null;
   }
+  const elModal= modelAppState.getIsShowModal()? <CModalSelDate /> : null;
+  
+  const fn=()=>{
+    console.log('x');
+    modelAppState.setIsShowModal(true)
+  }
   
   return (
     <div>
-      <CDateSelector dateSelected={apodState.item?.date} setDateSelected={modelAppState.setDate}/>
-      <CApod apodItem={apodState.item}/>
+      <CApod apodItem={apodState.item} onShowModal={fn}/>
+      {elModal}
     </div>
   );
   

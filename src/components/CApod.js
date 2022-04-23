@@ -2,9 +2,8 @@ import React, {useContext} from 'react';
 import './capod.css';
 import AppContext from "../model/AppContext";
 
-const CApod = ({apodItem}) => {
+const CApod = ({apodItem, onShowModal}) => {
   
-  const modelAppState = useContext(AppContext);
   
   if (apodItem === null) {
     return null;
@@ -13,7 +12,7 @@ const CApod = ({apodItem}) => {
   return (
     <>
       <div className=" has-text-centered mb-4">
-        <button className="button is-info " onClick={()=>modelAppState.setIsShowModal(true)}>
+        <button className="button is-info " onClick={onShowModal}>
           <i className="fa fa-calendar mr-2"/>
           {apodItem.date}
         </button>
