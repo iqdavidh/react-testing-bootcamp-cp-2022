@@ -30,13 +30,12 @@ const CDateSelector = ({}) => {
     const element = document.querySelector('#datetxt');
     // bulmaCalendar instance is available as element.bulmaCalendar
     element.bulmaCalendar.on('select', setDatePicket);
-    
-    
+    element.bulmaCalendar.open();
   }, []);
   
   return (
     <div className="is-flex mb-4" style={{justifyContent: "center"}}>
-      <div style={{maxWidth: "180px"}}>
+      <div style={{maxWidth: "180px;"}}>
         <input id="datetxt" type="date"/>
       </div>
       <ToastContainer/>

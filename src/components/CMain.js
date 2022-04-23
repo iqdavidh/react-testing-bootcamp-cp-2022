@@ -56,7 +56,7 @@ const CMain = () => {
   if (!apodState.item) {
     return null;
   }
-  const elModal= modelAppState.getIsShowModal()? <CModalSelDate /> : null;
+  const elModal= modelAppState.getIsShowModal() === true? <CModalSelDate /> : null;
   
   const fn=()=>{
     console.log('x');
