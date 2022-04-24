@@ -24,7 +24,7 @@ const CApod = ({apodItem, onShowModal}) => {
         </button>
       </div>
       
-      <div className="is-flex-tablet" >
+      <article className="is-flex-tablet" >
         <div className="wrapperApodImg">
           <a href={apodItem.hdurl} target="_blank">
             <img title={apodItem.title} src={apodItem.url} alt={apodItem.date}/>
@@ -32,12 +32,11 @@ const CApod = ({apodItem, onShowModal}) => {
         </div>
         
         <div className="apodExplanation" style={{aligItems: "top"}}>
-          
           <h2 className="imgTitle mb-2">{apodItem.title}</h2>
           {apodItem.explanation}
         </div>
       
-      </div>
+      </article>
     </>
   );
 };

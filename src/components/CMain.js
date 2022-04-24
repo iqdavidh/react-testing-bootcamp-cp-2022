@@ -63,11 +63,11 @@ const CMain = () => {
   }
   
   return (
-    <div>
+    <main>
       <CApod apodItem={apodState.item} onShowModal={fn}/>
       {elModal}
       <ToastContainer/>
-    </div>
+    </main>
   );
   
   
