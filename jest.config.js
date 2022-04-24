@@ -2,6 +2,7 @@
 
 // Add any custom config to be passed to Jest
 const customJestConfig = {
+
   coverageThreshold: {
     global: {
       lines: 80,
