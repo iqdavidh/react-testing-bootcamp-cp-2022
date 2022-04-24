@@ -6,7 +6,13 @@ const CApod = ({apodItem, onShowModal}) => {
   
   
   if (apodItem === null) {
-    return null;
+    return (
+      <div className=" has-text-centered mb-4">
+        <button className="button is-info " onClick={onShowModal}>
+          <i className="fa fa-calendar mr-2"/>
+        </button>
+      </div>
+    );
   }
   
   return (
