@@ -2,46 +2,33 @@ import React, {useContext, useEffect, useState} from 'react';
 import CApod from "./CApod";
 import CLoading from "./CLoading";
 import CErrorMsg from "./CErrorMsg";
-import ApodStore from "../services/ApodStore";
-import apiClient from "../services/NasaApiClient";
+import ApodImgService from "../services/ApodImgService";
 import AppContext from "../model/AppContext";
 import CModalSelDate from "./CModalSelDate";
 
 const CMain = () => {
   
   const [apodState, setApodState] = useState({isLoaded: false})
-  
+  const [dateSelected, setDateSelected]=useState(null)
   
   const modelAppState = useContext(AppContext);
-  
-  const dateSelected = modelAppState.getDate();
-  
-  
   
   useEffect(() => {
     
     //Inititialization loading data from api
     (async () => {
-      const apodCache = ApodStore.getItem(dateSelected);
-      
-      if (!apodCache) {
-        const result = await apiClient.Apod(dateSelected);
-        
-        const stateNew = result.success
-          ? {isLoaded: true, item: result.data}
-          : {isLoaded: true, msgError: "There was an error, please try again. " + result.msg};
-        
-        if (result.success) {
-          ApodStore.setItem(result.data);
-        }
-        setApodState(stateNew);
+      try {
+        console.log(9999)
+        const item = await ApodImgService.getItemFromDate(dateSelected);
+        setApodState({item, isLoaded: true})
+      } catch (e) {
+        setApodState({isLoaded: true, msg: e.message})
       }
-      
     })();
   }, [dateSelected])
   
-  useEffect(()=>{
-   modelAppState.setIsShowModal(false)
+  useEffect(() => {
+    modelAppState.setIsShowModal(false)
   }, [])
   
   
@@ -56,9 +43,9 @@ const CMain = () => {
   if (!apodState.item) {
     return null;
   }
-  const elModal= modelAppState.getIsShowModal() === true? <CModalSelDate /> : null;
+  const elModal = modelAppState.getIsShowModal() === true ? <CModalSelDate setDateSelected={setDateSelected}/> : null;
   
-  const fn=()=>{
+  const fn = () => {
     console.log('x');
     modelAppState.setIsShowModal(true)
   }
