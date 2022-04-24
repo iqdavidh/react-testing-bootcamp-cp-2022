@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React, {} from 'react';
 import './capod.css';
-import AppContext from "../model/AppContext";
+
 
 const CApod = ({apodItem, onShowModal}) => {
   

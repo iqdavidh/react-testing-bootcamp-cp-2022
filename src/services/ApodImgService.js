@@ -30,8 +30,33 @@ const addItemToLocalStorage = (item) => {
   window.localStorage.setItem(KEY_LOCALSTORAGE_APOD, JSON.stringify(list));
 }
 
+const getToday = () => {
+  const today = new Date();
+  const month = (today.getMonth() + 1).toString().padStart(2, '0');
+  const day = today.getDate().toString().padStart(2, '0');
+  
+  return today.getFullYear() + `-${month}-${day}`;
+}
+
 
 const ApodImgService = {
+  
+  getIsValidDate:(d)=>{
+  
+    const todayYMD = getToday();
+  
+    const minDate = '1995-06-16';
+  
+    if (d < minDate) {
+      return `Date must be grater than ${minDate}`
+    }
+  
+    if (d > todayYMD) {
+      return `Date must be less than ${todayYMD}`
+    }
+  
+    return true;
+  },
   
   getItemFromDate: async (date) => {
     

@@ -6,10 +6,13 @@ import ApodImgService from "../services/ApodImgService";
 import AppContext from "../model/AppContext";
 import CModalSelDate from "./CModalSelDate";
 
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const CMain = () => {
   
   const [apodState, setApodState] = useState({isLoaded: false})
-  const [dateSelected, setDateSelected]=useState(null)
+  const [dateSelected, setDateSelected] = useState(null)
   
   const modelAppState = useContext(AppContext);
   
@@ -18,11 +21,20 @@ const CMain = () => {
     //Inititialization loading data from api
     (async () => {
       try {
-        console.log(9999)
+        
+        if (dateSelected) {
+          //DateValidation
+          const isValidOrError = ApodImgService.getIsValidDate(dateSelected);
+          if (isValidOrError !== true) {
+            throw new Error(isValidOrError)
+          }
+        }
+        
         const item = await ApodImgService.getItemFromDate(dateSelected);
         setApodState({item, isLoaded: true})
       } catch (e) {
-        setApodState({isLoaded: true, msg: e.message})
+        setApodState({...apodState , isLoaded: true})
+        toast.error(e.message)
       }
     })();
   }, [dateSelected])
@@ -54,6 +66,7 @@ const CMain = () => {
     <div>
       <CApod apodItem={apodState.item} onShowModal={fn}/>
       {elModal}
+      <ToastContainer/>
     </div>
   );
   
