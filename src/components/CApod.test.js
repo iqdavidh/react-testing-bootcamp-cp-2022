@@ -1,6 +1,6 @@
 //https://stackoverflow.com/questions/71685441/react-testing-library-gives-console-error-for-reactdom-render-in-react-18
 
-import { render, screen, fireEvent } from '@testing-library/react';
+import {render, screen, fireEvent} from '@testing-library/react';
 import CApod from './CApod';
 
 
@@ -17,18 +17,19 @@ describe('CApod', function () {
   
   test('renders Apod date,title, explanaiton', async () => {
     
-    render( <CApod apodItem={item}/> );
+    render(<CApod apodItem={item}/>);
     
     expect(screen.getByText(item.date)).toBeInTheDocument()
     expect(screen.getByText(item.explanation)).toBeInTheDocument()
     expect(screen.getByText(item.title)).toBeInTheDocument()
     //  expect(screen.getByText(item.url)).toBeInTheDocument()
+  
     
   });
- 
-  test('the showmodal is executed on click event', ()=>{
+  
+  test('the showmodal is executed on click event', () => {
     const handleClick = jest.fn()
-    render( <CApod apodItem={item} onShowModal={handleClick}/> );
+    render(<CApod apodItem={item} onShowModal={handleClick}/>);
     fireEvent.click(screen.getByRole("button"));
     expect(handleClick).toHaveBeenCalledTimes(1)
     

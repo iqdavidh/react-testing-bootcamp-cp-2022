@@ -10,45 +10,19 @@ const getToday = () => {
 
 const useAppState = () => {
   
-  const [d, setD] = useState(null)
+
   const [isShowModal, setIsShowModal] = useState(false)
   
   //Inicializacion
   useEffect(() => {
-    setD(null)
+    setIsShowModal(false)
   }, []);
   
-  
-  const getIsApocDateValid = (d) => {
-    const todayYMD = getToday();
-    
-    const minDate = '1995-06-16';
-    
-    if (d < minDate) {
-      return `Date must be grater than ${minDate}`
-    }
-    
-    if (d > todayYMD) {
-      return `Date must be less than ${todayYMD}`
-    }
-    
-    return true;
-    
-  };
-  
-  const setDate = (v) => {
-    console.log(v);
-    setD(v);
-  }
-  
+ 
+
   return {
-    getDate: () => d,
-    setDate,
-    getIsApocDateValid, /* TODO remove */
-    
     getIsShowModal:()=>isShowModal,
     setIsShowModal
-    
   };
 };
 
