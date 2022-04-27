@@ -10,7 +10,6 @@ const customJestConfig = {
   },
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   testEnvironment: "jest-environment-jsdom",
-  
   moduleNameMapper:{
     "\\.(css|less|sass|scss)$": "<rootDir>/src/CssModuleForJest.js",
     "\\.(gif|ttf|eot|svg)$": "<rootDir>/src/CssModuleForJest"

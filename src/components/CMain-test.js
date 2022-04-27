@@ -7,7 +7,9 @@ jest.mock("./services/ApodImgServic")
 
 describe('CMain', function () {
   it('should - display image', function () {
- 
+    
     render(<CMain />)
+    
+    expect(true).toBe(true)
   });
 });

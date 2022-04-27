@@ -1,7 +1,5 @@
 
-
 const ApodImgService = {
-  
   getIsValidDate:(d)=>{
     return true;
   },
