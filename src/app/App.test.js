@@ -1,4 +1,3 @@
-//import your function component and render, screen functions
 import { render,  screen } from "@testing-library/react";
 import App from './App';
 

@@ -1,5 +1,5 @@
 //https://stackoverflow.com/questions/71685441/react-testing-library-gives-console-error-for-reactdom-render-in-react-18
-
+import React from 'react';
 import {render, screen, fireEvent} from '@testing-library/react';
 import CApod from './CApod';
 
@@ -14,7 +14,6 @@ const item = {
 }
 
 describe('CApod', function () {
- 
   
   test('renders Apod date,title, explanaiton', async () => {
     
