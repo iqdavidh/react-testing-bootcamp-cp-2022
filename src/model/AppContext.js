@@ -8,7 +8,7 @@ const AppContext = React.createContext({
   },
   getIsApocDateValid:()=>{},
   getIsShowModal:()=>{},
-  setIsShowModal:(b)=>{ console.log('Nmo implemented')}
+  setIsShowModal:(b)=>{ }
 });
 
 export default AppContext;
