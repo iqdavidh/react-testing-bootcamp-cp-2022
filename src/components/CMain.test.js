@@ -3,7 +3,7 @@ import {render, screen} from '@testing-library/react';
 import CMain from "./CMain";
 
 
-jest.mock("./services/ApodImgServic")
+jest.mock("../services/ApodImgService")
 
 describe('CMain', function () {
   it('should - display image', function () {
