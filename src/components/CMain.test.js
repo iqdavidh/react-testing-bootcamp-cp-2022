@@ -30,7 +30,7 @@ describe('CMain', function () {
   
     user.click(calendarButton);
     await act(() => Promise.resolve())
-    //The problem is the button shows a modal window that fills the DOM
+    //The problem is : the button shows a modal window that fills the DOM
     
     
     //document.getElementsByClassName("button")[0].click()
