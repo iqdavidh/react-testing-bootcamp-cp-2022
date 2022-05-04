@@ -1,10 +1,20 @@
+import React, {} from 'react';
 import apiClient from "./NasaApiClient";
 
 const KEY_LOCALSTORAGE_APOD = "apodcache";
 
+const dicWindowMock = {}
+let windowMock = {
+  localStorage: {
+    getItem: (key) => dicWindowMock[key],
+    setItem: (key, stringValue) => dicWindowMock[key] = stringValue
+  }
+}
 
 const getCache = () => {
-  const json = window.localStorage.getItem(KEY_LOCALSTORAGE_APOD) || "[]";
+  
+  const storage = window ? window.localStorage : windowMock;
+  const json = storage.getItem(KEY_LOCALSTORAGE_APOD) || "[]";
   return JSON.parse(json);
 }
 
@@ -27,7 +37,9 @@ const addItemToLocalStorage = (item) => {
   
   let list = getCache();
   list = [...list, item];
-  window.localStorage.setItem(KEY_LOCALSTORAGE_APOD, JSON.stringify(list));
+  
+  const storage = window ? window.localStorage : windowMock;
+  storage.setItem(KEY_LOCALSTORAGE_APOD, JSON.stringify(list));
 }
 
 const getToday = () => {
@@ -41,20 +53,20 @@ const getToday = () => {
 
 const ApodImgService = {
   
-  getIsValidDate:(d)=>{
-  
+  getIsValidDate: (d) => {
+    
     const todayYMD = getToday();
-  
+    
     const minDate = '1995-06-16';
-  
+    
     if (d < minDate) {
       return `Date must be grater than ${minDate}`
     }
-  
+    
     if (d > todayYMD) {
       return `Date must be less than ${todayYMD}`
     }
-  
+    
     return true;
   },
   
