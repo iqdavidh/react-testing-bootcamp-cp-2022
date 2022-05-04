@@ -35,6 +35,8 @@ describe('CApod', function () {
     fireEvent.click(screen.getByRole("button"));
     expect(handleClick).toHaveBeenCalledTimes(1)
     
+    screen.debug();
+    
   })
   
   
