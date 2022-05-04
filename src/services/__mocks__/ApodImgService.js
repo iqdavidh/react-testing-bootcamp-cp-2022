@@ -1,10 +1,26 @@
+/***
+ * Mock Object
+ * @returns {*}
+ */
+const getToday = () => {
+  const today = new Date();
+  const month = (today.getMonth() + 1).toString().padStart(2, '0');
+  const day = today.getDate().toString().padStart(2, '0');
+  
+  return today.getFullYear() + `-${month}-${day}`;
+}
 
 const ApodImgService = {
-  getIsValidDate:(d)=>{
+  getIsValidDate: (d) => {
     return true;
   },
   
   getItemFromDate: async (date) => {
+    
+    if (date === null) {
+      date = "TODAY"
+    }
+    
     return {
       "copyright": "Stan Honda",
       "date": date,
@@ -12,10 +28,10 @@ const ApodImgService = {
       "hdurl": "https://apod.nasa.gov/apod/image/2204/PlanetBridge_Honda_3000.jpg",
       "media_type": "image",
       "service_version": "v1",
-      "title": "MOCK - Planet Line over New York Bridge -",
+      "title": `MOCK - ${date}`,
       "url": "https://apod.nasa.gov/apod/image/2204/PlanetBridge_Honda_960.jpg"
     }
-  
+    
   }
 }
 

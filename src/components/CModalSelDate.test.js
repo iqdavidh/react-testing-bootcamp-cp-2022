@@ -10,10 +10,12 @@ describe('CModalSelDate', function () {
     const handleSelect = jest.fn()
     render(<CModalSelDate setDateSelected={handleSelect}/>)
   
+    //At the begginig is it the loading message
+    
+    screen.debug();
     fireEvent.click(screen.getByText("15"));
     
     expect(handleSelect).toHaveBeenCalledTimes(1)
-    
   });
   
   

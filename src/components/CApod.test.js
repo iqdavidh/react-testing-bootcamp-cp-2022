@@ -23,7 +23,8 @@ describe('CApod', function () {
     expect(screen.getByText(item.date)).toBeInTheDocument()
     expect(screen.getByText(item.explanation)).toBeInTheDocument()
     expect(screen.getByText(item.title)).toBeInTheDocument()
-    //  expect(screen.getByText(item.url)).toBeInTheDocument()
+    
+    // TODO confirm  URL IMAGE is present expect(screen.getByText(item.url)).toBeInTheDocument()
   
     
   });
