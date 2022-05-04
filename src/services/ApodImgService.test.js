@@ -1,5 +1,7 @@
 import ApodImgService from "./ApodImgService";
 
+jest.setTimeout(99999);
+
 const getToday = () => {
   const today = new Date();
   const month = (today.getMonth() + 1).toString().padStart(2, '0');
